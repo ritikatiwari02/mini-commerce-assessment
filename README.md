@@ -1,4 +1,5 @@
 Mini Commerce Demo
+
 Hi there! This is a simple Node.js and Express app built for a technical assessment. It's a mini e-commerce site with two roles: an Admin who can add products and see orders, and a Client who can browse products and place an order.
 
 Getting Started Locally
@@ -37,13 +38,9 @@ For handling user sign-up, login, and managing roles (Admin vs. Client), I'd use
 
 5. Adding Payments with PayPal
 To process payments securely, the flow must be server-driven:
-
 The client clicks "Pay," and the frontend calls our backend (a Lambda function).
-
 This Lambda function securely communicates with the PayPal API to create a payment intent.
-
 The user approves the transaction in the PayPal popup on the frontend.
-
 Another Lambda function gets the final confirmation from PayPal and updates the order's status to PAID in DynamoDB. This server-side validation is critical for security.
 
 6. Scaling & SEO
