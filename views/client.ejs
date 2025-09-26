@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Commerce - Client</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { color: #4a4a4a; text-align: center; }
+        .product-list { list-style: none; padding: 0; }
+        .product-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee; }
+        .product-item:last-child { border-bottom: none; }
+        .product-details { font-size: 1.1em; }
+        .product-price { color: #007bff; font-weight: bold; }
+        .order-btn { background-color: #28a745; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 1em; }
+        .order-btn:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Our Products</h1>
+        <ul class="product-list">
+            <% if (products.length > 0) { %>
+                <% products.forEach(product => { %>
+                    <li class="product-item">
+                        <div class="product-details">
+                            <span class="product-name"><%= product.name %></span> - 
+                            <span class="product-price">$<%= product.price %></span>
+                        </div>
+                        <form action="/orders" method="POST" style="display: inline;">
+                            <input type="hidden" name="productId" value="<%= product.id %>">
+                            <button type="submit" class="order-btn">Order</button>
+                        </form>
+                    </li>
+                <% }) %>
+            <% } else { %>
+                <p>No products available at the moment.</p>
+            <% } %>
+        </ul>
+    </div>
+</body>
+</html>
